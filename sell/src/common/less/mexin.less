@@ -1,0 +1,15 @@
+// 定义函数
+// 在线编译工具http://tool.oschina.net/less
+// 关于带参数的Mixin函数
+.border-1px(@color){
+	position: relative;
+	&:after{
+		display: block;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		border-top: 1px solid @color;
+		content: ' ';
+	}
+}

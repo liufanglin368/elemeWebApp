@@ -1,0 +1,20 @@
+//全局样式
+//媒体查询设置缩放
+//dpi为1.5的设置
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5){
+	.border-1px{
+		&::after{
+			-webkit-transform: scaleY(0.7);
+     		transform: scaleY(0.7);
+		}
+	}
+}
+//dpi为2的设置
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){
+	.border-1px{
+		&::after{
+			-webkit-transform: scaleY(0.5);
+     		transform: scaleY(0.5);
+		}
+	}
+}
