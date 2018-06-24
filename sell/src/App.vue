@@ -1,6 +1,7 @@
 <template>
   <div>
-  	<v-header></v-header>
+  	<!-- <v-header> 组件-->
+  	<v-header :seller="seller"></v-header>	<!--v-bind:绑定数据 -->
   	<div class="tab border-1px">
   		<div class="tab-item">
 			<router-link to="/goods">商品</router-link>	
@@ -20,16 +21,33 @@
 <script>
 	import header from 'components/header/header.vue'
 	
+	const ERR_OK = 0;
+
 	export default{
-		components: {
+		data() {// 实例的数据对象
+			return {
+				seller: {}
+			};
+		},
+		created() {//选项 / 生命周期钩子 在实例创建完成后被立即调用
+			this.$http.get('/api/seller').then((response) => {
+				response = response.body;
+				//console.log(response)
+				if(response.errno === ERR_OK){
+					this.seller = response.data;
+					//console.log(this.seller)
+				}
+			})
+		},
+		components: {	//选项 / 资源包含 Vue 实例可用组件的哈希表。
 			'v-header': header
 		}
 	}
 </script>
 
 <style lang="less" rel="stylesheet/less">
-	@import "./common/less/mexin.less";
-	
+	@import "./common/less/mexin";
+
 	.tab{
 		display: flex;
 		width: 100%;

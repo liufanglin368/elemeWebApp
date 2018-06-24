@@ -13,3 +13,10 @@
 		content: ' ';
 	}
 }
+
+.bg-image(@url){
+	background-image: url("../../components/@{url}@2x.png"); 
+	@media (--webkit-min-device-pixel-ratio: 3), (--webkit-min-device-pixel-ratio: 3){
+		background-image: url("../../components/@{url}@3x.png");
+	}
+}
