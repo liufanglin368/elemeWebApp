@@ -8,7 +8,7 @@ Vue.use(Router); // Router1. 安装插件
 
 const routes = [{ // Router2. 定义路由
   path: '/',
-  redirect: '/goods'
+  redirect: '/goods'    // // 重定向设置默认路由
 }, {
   path: '/goods',
   component: goods
