@@ -14,7 +14,7 @@
   			<router-link to="/seller">商家</router-link>
   		</div>
   	</div>
-  	<router-view></router-view><!-- Router7.出口 -->
+  	<router-view :seller="seller"></router-view><!-- Router7.出口 -->
   </div>
 </template>
 
