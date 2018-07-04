@@ -28,6 +28,9 @@
   								<span class="now">¥{{food.price}}</span>
   								<span class="old" v-show='food.oldPrice'>¥{{food.oldPrice}}</span>
   							</div>
+  							<div class="cartcontrol-wrapper">
+								<cartcontrol :food="food"></cartcontrol>
+  							</div>
   						</div>
   						
   					</li>
@@ -35,7 +38,7 @@
   			</li>
   		</ul>
   	</div>
-  	<shopcart :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopcart>
+  	<shopcart :select-foods="selectFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopcart>
   </div>
   
 </template>
@@ -43,7 +46,7 @@
 <script>
 	import BScroll from 'better-scroll';
 	import shopcart from 'components/shopcart/shopcart';
-
+	import cartcontrol from 'components/cartcontrol/cartcontrol';
 	const ERR_OK = 0;
 
 	export default{
@@ -69,6 +72,17 @@
 					}
 				}
 				return 0;
+			},
+			selectFoods(){
+				let foods = [];
+				this.goods.forEach((good) => {
+					good.foods.forEach((food) => {
+						if (food.count) {
+							foods.push(food);
+						}
+					});
+				});
+				return foods;
 			}
 		},
 		created() {	//在created钩子中，您将能够访问被动数据，事件处于活动状态。模板和虚拟DOM尚未安装或渲染。
@@ -126,7 +140,8 @@
 			}
 		},
 		components: {
-			shopcart
+			shopcart,
+			cartcontrol
 		}
 	}
 </script>
@@ -256,6 +271,11 @@
 							font-size: 10;
 							color: rgb(147,153,159);
 						}
+					}
+					.cartcontrol-wrapper{
+						position: absolute;
+						right: 0;
+						bottom: 12px;
 					}
 				}
 			}
