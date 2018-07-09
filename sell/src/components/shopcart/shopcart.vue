@@ -49,7 +49,7 @@
 			    </div>
 			</transition>
 		</div>
-		<transition name="fade">	// 过度动画
+		<transition name="fade">	
 			<div class="list-mask" v-show="listShow" @click="hidlist"></div>
 		</transition>
 	</div>
